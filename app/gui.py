@@ -22,6 +22,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timer.setInterval(update_interval)
         self.timer.start()
 
+        self.joy_axes = [self.joy_lx_label, self.joy_ly_label,
+                         self.joy_rx_label, self.joy_ry_label]
+        self.trigger_axes = [self.trigger_l2_label, self.trigger_r2_label]
+
     def setting_btn_clicked(self):
         self.setting_window.show()
 
@@ -30,15 +34,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.setting_window.auto_reconnect_check.setChecked(False)
             self.controller.serial_disconnect()
         else:
-            current_port_description = self.setting_window.get_selected_port()
-            port = ''
-            # for port in self.controller.ports:
-            #     if port.description == current_port_description:
-            #         port = port.device
-            #         break
-            port = next(
-                (port.device for port in self.controller.ports if port.description == current_port_description), '')
-
+            port = self.controller.ports[self.setting_window.get_selected_port()]
             baudrate = self.setting_window.get_selected_baudrate()
             self.controller.serial_connect(port, baudrate)
 
@@ -66,23 +62,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 'background-color: red; color: white;')
 
     def display_controller_state(self):
-        self.joy_lx_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[0:1], "big", signed=True)}')
-        self.joy_ly_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[1:2], "big", signed=True)}')
-        self.joy_rx_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[2:3], "big", signed=True)}')
-        self.joy_ry_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[3:4], "big", signed=True)}')
-        self.trigger_l2_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[4:5], "big")}')
-        self.trigger_r2_label.setText(
-            f'{int.from_bytes(self.controller.controller_state_data[5:6], "big")}')
+        for i, label in enumerate(self.joy_axes):
+            label.setText(
+                f'{int.from_bytes(self.controller.ctrller_axis_state[i:i+1], "big", signed=True)}')
+        for i, label in enumerate(self.trigger_axes):
+            label.setText(
+                f'{int.from_bytes(self.controller.ctrller_axis_state[i+4:i+5], "big")}')
         self.button_state_label.setText(
-            f'Button: {int.from_bytes(self.controller.controller_state_data[6:-1], "big"):016b}')
+            f'Button: {int.from_bytes(self.controller.ctrller_btn_state[:], "big"):024b}')
         self.raw_data_label.setText(
-            f'Data: {int.from_bytes(self.controller.controller_state_data[:], "big"):018x}')
-        
+            f'Data  : {int.from_bytes(self.controller.ctrller_axis_state[:6], "big"):012x}'
+                    + f'{int.from_bytes(self.controller.ctrller_btn_state[:], "big"):06x}' + f'{self.controller.checksum_byte:02x}')
 
     def update(self):
         self.controller.tick()
