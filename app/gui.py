@@ -69,9 +69,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             label.setText(
                 f'{int.from_bytes(self.controller.ctrller_axis_state[i+4:i+5], "big")}')
         self.button_state_label.setText(
-            f'Button: {int.from_bytes(self.controller.ctrller_btn_state[:], "big"):024b}')
+            f'Button: 0b{int.from_bytes(self.controller.ctrller_btn_state[:], "big"):024b}')
         self.raw_data_label.setText(
-            f'Data  : {int.from_bytes(self.controller.ctrller_axis_state[:6], "big"):012x}'
+            f'Data  : 0x{int.from_bytes(self.controller.ctrller_axis_state[:6], "big"):012x}'
                     + f'{int.from_bytes(self.controller.ctrller_btn_state[:], "big"):06x}' + f'{self.controller.checksum_byte:02x}')
 
     def update(self):

@@ -37,9 +37,10 @@ class Controller:
         self.num_buttons = 0        # Number of buttons
         self.num_axis = 0           # Number of axes
         self.num_hat = 0            # Number of hats
+        self.check_sum = check_sum  # Checksum flag
         self.num_axes_bytes = 0     # Number of bytes for axes for sending data
         self.num_btns_bytes = 0     # Number of bytes for buttons for sending data
-        self.check_sum = check_sum  # Checksum flag
+        self.checksum_byte = 0x00   # Checksum byte for sending data
 
         self.ctrller_axis_state = bytearray(Controller.MAX_NUM_JOY_AXIS)
         self.ctrller_btn_state = bytearray(
