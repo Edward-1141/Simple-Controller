@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\User\Desktop\Robotic\Robocon\TuningKeyboard\tools\\..\app\ui\app.ui'
+# Form implementation generated from reading ui file 'C:\Users\User\Desktop\Robotic\Robocon\Controller\tools\\..\app\ui\app.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(320, 392)
+        MainWindow.resize(320, 419)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -126,6 +126,11 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.widget_4)
         self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
         self.groupBox.setMinimumSize(QtCore.QSize(0, 100))
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(11)
+        font.setBold(True)
+        self.groupBox.setFont(font)
         self.groupBox.setObjectName("groupBox")
         self.gridLayout = QtWidgets.QGridLayout(self.groupBox)
         self.gridLayout.setObjectName("gridLayout")
@@ -172,11 +177,11 @@ class Ui_MainWindow(object):
         self.joy_rx_label1.setObjectName("joy_rx_label1")
         self.gridLayout.addWidget(self.joy_rx_label1, 1, 0, 1, 1)
         self.button_state_label = QtWidgets.QLabel(parent=self.groupBox)
-        self.button_state_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.button_state_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.button_state_label.setObjectName("button_state_label")
         self.gridLayout.addWidget(self.button_state_label, 3, 0, 1, 4)
         self.raw_data_label = QtWidgets.QLabel(parent=self.groupBox)
-        self.raw_data_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.raw_data_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.raw_data_label.setObjectName("raw_data_label")
         self.gridLayout.addWidget(self.raw_data_label, 4, 0, 1, 4)
         self.verticalLayout.addWidget(self.groupBox)

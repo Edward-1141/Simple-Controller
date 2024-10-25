@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>392</height>
+    <height>419</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -279,6 +279,13 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="title">
        <string>Controller</string>
       </property>
@@ -391,7 +398,7 @@
           <string>00000000</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -401,7 +408,7 @@
           <string>0xff</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>

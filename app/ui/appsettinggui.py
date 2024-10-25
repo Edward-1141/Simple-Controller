@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\User\Desktop\Robotic\Robocon\TuningKeyboard\tools\\..\app\ui\setting.ui'
+# Form implementation generated from reading ui file 'C:\Users\User\Desktop\Robotic\Robocon\Controller\tools\\..\app\ui\setting.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
